@@ -1,0 +1,88 @@
+version: '3.4'
+
+x-common-args: &common-args
+  PYTHON_VERSION: ${PYTHON_VERSION}
+  CONAN_VERSION: ${CONAN_VERSION}
+  DOCKER_USERNAME: ${DOCKER_USERNAME}
+  DOCKER_TAG: ${DOCKER_TAG}
+  DISTRO: ${DISTRO}
+  DISTRO_VERSION: ${DISTRO_VERSION}
+
+services:
+  gcc10:
+    platform: ${PLATFORM}
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        <<: *common-args
+        COMPILER: gcc
+        COMPILER_VERSION: 10
+    image: ${DOCKER_USERNAME}/gcc10-${DISTRO}${DISTRO_VERSION}:${DOCKER_TAG}
+    container_name: gcc10
+    tty: true
+
+  gcc11:
+    platform: ${PLATFORM}
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        <<: *common-args
+        COMPILER: gcc
+        COMPILER_VERSION: 11
+    image: ${DOCKER_USERNAME}/gcc11-${DISTRO}${DISTRO_VERSION}:${DOCKER_TAG}
+    container_name: gcc11
+    tty: true
+
+  gcc12:
+    platform: ${PLATFORM}
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        <<: *common-args
+        COMPILER: gcc
+        COMPILER_VERSION: 12
+    image: ${DOCKER_USERNAME}/gcc12-${DISTRO}${DISTRO_VERSION}:${DOCKER_TAG}
+    container_name: gcc12
+    tty: true
+
+  clang12:
+    platform: ${PLATFORM}
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        <<: *common-args
+        COMPILER: clang
+        COMPILER_VERSION: 12
+    image: ${DOCKER_USERNAME}/clang12-${DISTRO}${DISTRO_VERSION}:${DOCKER_TAG}
+    container_name: clang12
+    tty: true
+
+  clang13:
+    platform: ${PLATFORM}
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        <<: *common-args
+        COMPILER: clang
+        COMPILER_VERSION: 13
+    image: ${DOCKER_USERNAME}/clang13-${DISTRO}${DISTRO_VERSION}:${DOCKER_TAG}
+    container_name: clang13
+    tty: true
+
+  clang14:
+    platform: ${PLATFORM}
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        <<: *common-args
+        COMPILER: clang
+        COMPILER_VERSION: 14
+    image: ${DOCKER_USERNAME}/clang14-${DISTRO}${DISTRO_VERSION}:${DOCKER_TAG}
+    container_name: clang14
+    tty: true

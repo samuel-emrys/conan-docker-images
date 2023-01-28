@@ -1,0 +1,24 @@
+image: docker/compose:latest
+services:
+  - docker:dind
+
+build:
+  stage: build
+  script:
+    - docker compose down
+    - docker compose build
+    - docker compose up tester-image
+    - docker save $(docker compose config --images) -o image/images.tar
+  artifacts:
+    paths:
+      - image
+
+deploy:
+  stage: deploy
+  needs:
+    - job: build
+      artifacts: true
+  script:
+    - docker login -u '$DOCKERHUB_USER' -p '$DOCKERHUB_TOKEN'
+    - docker load -i image/images.tar
+    - docker compose push
