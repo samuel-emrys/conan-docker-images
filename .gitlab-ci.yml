@@ -1,17 +1,28 @@
-image: docker/compose:latest
+image: docker:20.10.23
+
+variables:
+  DOCKER_TLS_CERTDIR: "/certs"
+
 services:
-  - docker:dind
+  - docker:20.10.23-dind
 
 build:
   stage: build
+  before_script:
+    - export
+    - docker info
+    - docker --version
+    - pwd
+    - ls -al
   script:
-    - docker compose down
     - docker compose build
     - docker compose up tester-image
     - docker save $(docker compose config --images) -o image/images.tar
   artifacts:
     paths:
       - image
+  tags:
+    - dind
 
 deploy:
   stage: deploy
@@ -22,3 +33,5 @@ deploy:
     - docker login -u '$DOCKERHUB_USER' -p '$DOCKERHUB_TOKEN'
     - docker load -i image/images.tar
     - docker compose push
+  tags:
+    - dind
