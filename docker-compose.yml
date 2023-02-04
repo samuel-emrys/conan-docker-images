@@ -11,102 +11,96 @@ x-common-args: &common-args
 services:
   gcc10: &gcc10
     platform: ${PLATFORM}
+    image: ${DOCKER_USERNAME}/gcc10-${DISTRO}${DISTRO_VERSION}:latest
+    container_name: gcc10
     build:
       context: .
       dockerfile: Dockerfile
+      tags:
+        - ${DOCKER_USERNAME}/gcc10-${DISTRO}${DISTRO_VERSION}:latest
+        - ${DOCKER_USERNAME}/gcc10-${DISTRO}${DISTRO_VERSION}:${DOCKER_TAG}
       args:
         <<: *common-args
         COMPILER: gcc
         COMPILER_VERSION: 10
-    image: ${DOCKER_USERNAME}/gcc10-${DISTRO}${DISTRO_VERSION}:latest
-    container_name: gcc10
     tty: true
-
-  gcc10-versioned:
-    << : *gcc10
-    image: ${DOCKER_USERNAME}/gcc10-${DISTRO}${DISTRO_VERSION}:${DOCKER_TAG}
 
   gcc11: &gcc11
     platform: ${PLATFORM}
+    image: ${DOCKER_USERNAME}/gcc11-${DISTRO}${DISTRO_VERSION}:latest
+    container_name: gcc11
     build:
       context: .
       dockerfile: Dockerfile
+      tags:
+        - ${DOCKER_USERNAME}/gcc11-${DISTRO}${DISTRO_VERSION}:latest
+        - ${DOCKER_USERNAME}/gcc11-${DISTRO}${DISTRO_VERSION}:${DOCKER_TAG}
       args:
         <<: *common-args
         COMPILER: gcc
         COMPILER_VERSION: 11
-    image: ${DOCKER_USERNAME}/gcc11-${DISTRO}${DISTRO_VERSION}:latest
-    container_name: gcc11
     tty: true
-
-  gcc11-versioned:
-    << : *gcc11
-    image: ${DOCKER_USERNAME}/gcc11-${DISTRO}${DISTRO_VERSION}:${DOCKER_TAG}
 
   gcc12: &gcc12
     platform: ${PLATFORM}
+    image: ${DOCKER_USERNAME}/gcc12-${DISTRO}${DISTRO_VERSION}:latest
+    container_name: gcc12
     build:
       context: .
       dockerfile: Dockerfile
+      tags:
+        - ${DOCKER_USERNAME}/gcc12-${DISTRO}${DISTRO_VERSION}:latest
+        - ${DOCKER_USERNAME}/gcc12-${DISTRO}${DISTRO_VERSION}:${DOCKER_TAG}
       args:
         <<: *common-args
         COMPILER: gcc
         COMPILER_VERSION: 12
-    image: ${DOCKER_USERNAME}/gcc12-${DISTRO}${DISTRO_VERSION}:latest
-    container_name: gcc12
     tty: true
-
-  gcc12-versioned:
-    << : *gcc12
-    image: ${DOCKER_USERNAME}/gcc12-${DISTRO}${DISTRO_VERSION}:${DOCKER_TAG}
 
   clang12: &clang12
     platform: ${PLATFORM}
+    image: ${DOCKER_USERNAME}/clang12-${DISTRO}${DISTRO_VERSION}:latest
+    container_name: clang12
     build:
       context: .
       dockerfile: Dockerfile
+      tags:
+        - ${DOCKER_USERNAME}/clang12-${DISTRO}${DISTRO_VERSION}:latest
+        - ${DOCKER_USERNAME}/clang12-${DISTRO}${DISTRO_VERSION}:${DOCKER_TAG}
       args:
         <<: *common-args
         COMPILER: clang
         COMPILER_VERSION: 12
-    image: ${DOCKER_USERNAME}/clang12-${DISTRO}${DISTRO_VERSION}:latest
-    container_name: clang12
     tty: true
-
-  clang12-versioned:
-    << : *clang12
-    image: ${DOCKER_USERNAME}/clang12-${DISTRO}${DISTRO_VERSION}:${DOCKER_TAG}
 
   clang13: &clang13
     platform: ${PLATFORM}
+    image: ${DOCKER_USERNAME}/clang13-${DISTRO}${DISTRO_VERSION}:latest
+    container_name: clang13
     build:
       context: .
       dockerfile: Dockerfile
+      tags:
+        - ${DOCKER_USERNAME}/clang13-${DISTRO}${DISTRO_VERSION}:latest
+        - ${DOCKER_USERNAME}/clang13-${DISTRO}${DISTRO_VERSION}:${DOCKER_TAG}
       args:
         <<: *common-args
         COMPILER: clang
         COMPILER_VERSION: 13
-    image: ${DOCKER_USERNAME}/clang13-${DISTRO}${DISTRO_VERSION}:latest
-    container_name: clang13
     tty: true
-
-  clang13-versioned:
-    << : *clang13
-    image: ${DOCKER_USERNAME}/clang13-${DISTRO}${DISTRO_VERSION}:${DOCKER_TAG}
 
   clang14: &clang14
     platform: ${PLATFORM}
+    image: ${DOCKER_USERNAME}/clang14-${DISTRO}${DISTRO_VERSION}:latest
+    container_name: clang14
     build:
       context: .
       dockerfile: Dockerfile
+      tags:
+        - ${DOCKER_USERNAME}/clang14-${DISTRO}${DISTRO_VERSION}:latest
+        - ${DOCKER_USERNAME}/clang14-${DISTRO}${DISTRO_VERSION}:${DOCKER_TAG}
       args:
         <<: *common-args
         COMPILER: clang
         COMPILER_VERSION: 14
-    image: ${DOCKER_USERNAME}/clang14-${DISTRO}${DISTRO_VERSION}:latest
-    container_name: clang14
     tty: true
-
-  clang14-versioned:
-    << : *clang14
-    image: ${DOCKER_USERNAME}/clang14-${DISTRO}${DISTRO_VERSION}:${DOCKER_TAG}

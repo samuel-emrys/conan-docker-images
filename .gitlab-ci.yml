@@ -15,9 +15,9 @@ build:
     - pwd
     - ls -al
   script:
-    - docker compose build
+    - docker buildx bake --load
     - mkdir image
-    - docker save $(docker compose config --images) -o image/images.tar
+    - docker save $(docker buildx bake --print | grep ubuntu18.04 | cut -d '"' -f 2) -o image/images.tar
   artifacts:
     paths:
       - image
@@ -45,6 +45,6 @@ deploy:
   script:
     - docker login -u "$DOCKERHUB_USER" -p "$DOCKERHUB_TOKEN"
     - docker load -i image/images.tar
-    - docker compose push # to docker hub
+    - docker buildx bake --push # to docker hub
   tags:
     - dind
