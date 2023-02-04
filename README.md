@@ -8,6 +8,7 @@ These images are designed to provide a C++ build environment for a range of gcc 
     * texlive-latex-extra
     * texlive-fonts-utils
     * ghostscript
+    * graphviz
     * latexmk
 * Control over the conan version used. The conanio ubuntu 18.04 images appear to be updated infrequently, and at the time of writing were a number of versions behind.
 

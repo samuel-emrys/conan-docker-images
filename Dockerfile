@@ -14,6 +14,7 @@ RUN sudo ln -fs /usr/share/zoneinfo/America/New_York /etc/localtime \
     && DEBIAN_FRONTEND=noninteractive sudo apt install -y --no-install-recommends --no-install-suggests \
         build-essential \
         ghostscript \
+        graphviz \
         latexmk \
         libbz2-dev \
         libffi-dev \
