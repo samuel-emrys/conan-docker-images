@@ -36,12 +36,14 @@ $ docker compose push
 
 Currently, it will generate the following images of the format `${DOCKER_USERNAME}/${COMPILER}${COMPILER_VERSION}-${DISTRO}${DISTRO_VERSION}:${DOCKER_TAG}`, which includes:
 
-* samuelemrys/gcc10-ubuntu18.04:1.57.0
-* samuelemrys/gcc11-ubuntu18.04:1.57.0
-* samuelemrys/gcc12-ubuntu18.04:1.57.0
-* samuelemrys/clang12-ubuntu18.04:1.57.0
-* samuelemrys/clang13-ubuntu18.04:1.57.0
-* samuelemrys/clang14-ubuntu18.04:1.57.0
+* samuelemrys/gcc10-ubuntu18.04:latest
+* samuelemrys/gcc11-ubuntu18.04:latest
+* samuelemrys/gcc12-ubuntu18.04:latest
+* samuelemrys/clang12-ubuntu18.04:latest
+* samuelemrys/clang13-ubuntu18.04:latest
+* samuelemrys/clang14-ubuntu18.04:latest
+
+A range of conan version tags are also available. The current `latest` value can be determined by inspection of the `.env` file.
 
 Modification of some of these variables can be achieved through modification of the `.env` file. Modification of the compilers and versions will require modification of `docker-compose.yml`.
 
