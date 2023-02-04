@@ -45,6 +45,11 @@ deploy:
   script:
     - docker login -u "$DOCKERHUB_USER" -p "$DOCKERHUB_TOKEN"
     - docker load -i image/images.tar
-    - docker buildx bake --push # to docker hub
+    - |
+      for image in $(docker buildx bake --print | grep ubuntu18.04 | cut -d '"' -f2)
+      do
+        docker image push $image& # Push all images in parallel
+      done
+      wait # wait for all pushes to finish
   tags:
     - dind
